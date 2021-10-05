@@ -23,26 +23,18 @@
  * - `getPostDetails` fonksiyonu tetiklenerek ilgili içeriğin çıktısı gösterilmeli.
  
 ****************************** ODEV **************************/
+$script="post.php";
+require_once "functions.php";
 
-include_once "functions.php"; //functions.php'yi cektim.
+$id ??=1;
+$title ??="Merhaba Bootcamp";
+$type ??= "warning";
 
-if (var_dump(isset($id))==false):
-  $id=1;
-if (var_dump(isset($title))==false):
-  $title="yazı";
-if (var_dump(isset($type))==false):
-  $type="urgent";
-
-switch ($type) { 
-    case "urgent":
-        $color = "red";
-        break;
-    case "warning":
-        $color = "yellow";
-        break;
-    case "normal":
-        $color = "null";
-        break;
-}
-?>
-<div style="background-color:<?php echo $color ?>;"><?php getPostDetails($id,$title);?></div>
+$backgroundColor=match($type){
+ "urgent"=> "red",
+ "warning"=> "yellow",
+ "normal"=> null,
+};
+<div style="background-color:". $backgroundColor.">
+getPostDetails($id,$title);
+</div>
