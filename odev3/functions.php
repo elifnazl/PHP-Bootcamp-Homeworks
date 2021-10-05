@@ -16,7 +16,10 @@
  * bekliyoruz. Bununla ilgili detaylı bilgi diğer betiklerde yer alıyor.
  *
  ****************************** ODEV **************************/
-
+if(!isset($script)){
+    echo "bu dosyaya direkt erişemezsin";
+    exit;
+}
 function getLatestPosts($count = 5)
 {
     $posts = [];
@@ -47,5 +50,9 @@ function getPostDetails($id, $title)
 </p>
 EOT;
 }
+
+function getRandomPostCount ($min=1, $max=5){
+    return rand($min,$max);
+};
 
 
